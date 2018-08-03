@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: 'Gatsby Default Starter',
   },
-  plugins: ['gatsby-plugin-react-helmet',
+  plugins: [
+    'gatsby-plugin-react-helmet',
     `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -11,6 +12,21 @@ module.exports = {
         name: 'pages',
       },
     },
-    `gatsby-transformer-remark`,
+
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          'gatsby-remark-copy-linked-files',
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 800,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+      },
+    },
   ],
 }
