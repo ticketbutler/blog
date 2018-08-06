@@ -11,7 +11,6 @@ export default function Template({ pathContext }) {
       <div className="blog-post-container">
         <Helmet title={`Bloggg - ${title}`} />
         <div className="blog-post">
-          <h1>{title}</h1>
           <div
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}

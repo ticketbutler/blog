@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import Media from 'react-media'
+import '../styles/blog-listing.css'
 
-export default function Index(p) {
-  console.log(p)
-
-  const { edges: posts } = data.allMarkdownRemark
+export default function Index({ data }) {
+  console.log(data)
+  const posts = data.allMarkdownRemark.edges
   return (
     <div className="blog-posts">
       {posts
@@ -26,16 +26,17 @@ export default function Index(p) {
     </div>
   )
 }
-export const pageQuery = graphql`
+
+export const query = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark {
       edges {
         node {
           excerpt(pruneLength: 250)
           id
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY")
+            date
             path
           }
         }
