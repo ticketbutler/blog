@@ -1,6 +1,7 @@
 backend:
-  name: test-repo
+  name: git-gateway
   # repo: Editagud/blog
+ 
 
 media_folder: static/assets
 public_folder: assets
