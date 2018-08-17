@@ -13,4 +13,8 @@ collections:
       - { name: path, label: Path }
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }git push
+      - { name: body, label: Body, widget: markdown }
+
+      backend:
+  name: github
+  repo: Editagud/blog
