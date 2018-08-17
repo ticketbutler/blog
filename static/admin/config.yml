@@ -1,5 +1,6 @@
 backend:
   name: test-repo
+  # repo: Editagud/blog
 
 media_folder: static/assets
 public_folder: assets
@@ -15,6 +16,3 @@ collections:
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
 
-      backend:
-  name: github
-  repo: Editagud/blog
