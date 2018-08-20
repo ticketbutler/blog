@@ -3,8 +3,8 @@ backend:
   # repo: Editagud/blog
  
 
-media_folder: static/assets
-public_folder: assets
+media_folder: static/images
+public_folder: static
 
 collections:
   - name: blog

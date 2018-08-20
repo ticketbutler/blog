@@ -1,15 +1,20 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { Layout } from '../layouts/index.js'
 
 export default function Template({ pathContext }) {
   const post = pathContext
-  const { title, date } = post.frontmatter
+  const { title, date, image } = post.frontmatter
 
   return (
     <Layout title={title}>
+      <img
+        style={{
+          width: '100%',
+        }}
+        src={post.frontmatter.image}
+      />
+      <h2>{post.frontmatter.date}</h2>
       <div className="blog-post-container">
-        <Helmet title={`Bloggg - ${title}`} />
         <div className="blog-post">
           <div
             className="blog-post-content"
@@ -25,9 +30,11 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
+        image
         date
         path
         title
+        author
       }
     }
   }

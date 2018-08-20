@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 
 import Header from '../components/header'
 import './index.css'
-import '../layouts/layout-overide.css'
+
 import Media from 'react-media'
 
 export const Layout = ({ children, title }) => (
@@ -21,7 +21,6 @@ export const Layout = ({ children, title }) => (
     <div
       style={{
         margin: '0 auto',
-        maxWidth: 980,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -42,7 +41,11 @@ export const Layout = ({ children, title }) => (
                 padding: '25px',
               }}
             >
-              <div style={{ flex: 1 }}>
+              <div
+                style={{
+                  flex: 1,
+                }}
+              >
                 {typeof children === 'function' ? children() : children}
               </div>
             </div>
@@ -50,15 +53,19 @@ export const Layout = ({ children, title }) => (
             <div
               style={{
                 margin: '0 auto',
-                maxWidth: 980,
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 height: '100%',
-                padding: '25px',
               }}
             >
-              <div style={{ flex: 2.5, paddingRight: '30px' }}>
+              <div
+                style={{
+                  marginLeft: '15%',
+                  marginRight: '15%',
+                  paddingRight: '30px',
+                }}
+              >
                 {typeof children === 'function' ? children() : children}
               </div>
               <div style={{ flex: 1 }} />
