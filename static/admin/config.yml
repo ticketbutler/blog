@@ -9,7 +9,7 @@ public_folder: static
 collections:
   - name: blog
     label: Blog
-    folder: content
+    folder: content/01-08-2018-first-post
     create: true
     fields:
       - { name: path, label: Path }
