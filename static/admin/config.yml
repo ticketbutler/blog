@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Editagud/blog
+  repo: ticketbutler/blog
  
 
 media_folder: static/images
