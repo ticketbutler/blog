@@ -4,7 +4,7 @@ backend:
  
 
 media_folder: static/images
-public_folder: static/images
+public_folder: images
 
 collections:
   - name: blog
@@ -16,4 +16,6 @@ collections:
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
+      - { name: image, label: image, widget: image }
+      - { name: author, label: author }
 
