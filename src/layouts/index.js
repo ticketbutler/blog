@@ -17,7 +17,7 @@ export const Layout = ({ children, title }) => (
       ]}
     />
 
-    <Header siteTitle={title} />
+    <Header />
     <div
       style={{
         margin: '0 auto',
@@ -63,7 +63,9 @@ export const Layout = ({ children, title }) => (
                 style={{
                   marginLeft: '15%',
                   marginRight: '15%',
+                  marginTop: '2em',
                   paddingRight: '30px',
+                  textAlign: 'center',
                 }}
               >
                 {typeof children === 'function' ? children() : children}
