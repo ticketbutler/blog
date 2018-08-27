@@ -4,7 +4,7 @@ backend:
  
 
 media_folder: static/images
-public_folder: static
+public_folder: images
 
 collections:
   - name: blog
