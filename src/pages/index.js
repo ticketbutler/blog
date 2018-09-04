@@ -63,9 +63,6 @@ export default function Index({ data }) {
                     <div
                       style={{
                         display: 'flex',
-                        justifyContent: 'space-between',
-                        paddingLeft: '1em',
-                        paddingRight: '1em',
                       }}
                     >
                       <h2>{post.frontmatter.date}</h2>
@@ -78,7 +75,17 @@ export default function Index({ data }) {
                       padding: '2em',
                     }}
                   >
-                    <p>{post.excerpt}</p>
+                    <p
+                      style={{
+                        maxWidth: 350,
+                        textAlign: 'justify',
+                        minWidth: 350,
+                        justifyContent: 'space-between',
+                        padding: '1em',
+                      }}
+                    >
+                      {post.excerpt}
+                    </p>
                     <h2
                       style={{
                         textAlign: 'right',
