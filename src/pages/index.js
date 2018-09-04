@@ -46,7 +46,20 @@ export default function Index({ data }) {
                   }}
                 >
                   <div>
-                    <img src={post.frontmatter.image} />
+                    <div
+                      style={{
+                        width: 300,
+                        height: 200,
+                      }}
+                    >
+                      <img
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                        }}
+                        src={post.frontmatter.image}
+                      />
+                    </div>
                     <div
                       style={{
                         display: 'flex',
