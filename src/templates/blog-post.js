@@ -1,9 +1,14 @@
 import React from 'react'
 import { Layout } from '../layouts/index.js'
+import Link from 'gatsby-link'
 
-export default function Template({ pathContext }) {
-  const post = pathContext
+export default function Template({ data, location, pathContext }) {
+  const post = pathContext.blog
+  console.log(pathContext)
+  const { markdownRemark: posts } = data
   const { title, date, author, image } = post.frontmatter
+  const { next, prev } = pathContext
+  const { frontmatter, html } = post
 
   return (
     <Layout title={title}>
@@ -52,6 +57,22 @@ export default function Template({ pathContext }) {
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
+          <p>
+            {prev && (
+              <Link to={prev.frontmatter.path}>
+                Previous:
+                {prev.frontmatter.title}
+              </Link>
+            )}
+          </p>
+          <p>
+            {next && (
+              <Link to={next.frontmatter.path}>
+                Next:
+                {next.frontmatter.title}
+              </Link>
+            )}
+          </p>
         </div>
       </div>
     </Layout>

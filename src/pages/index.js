@@ -3,12 +3,18 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import Header from '../components/header'
 import Media from 'react-media'
+import {
+  SmallTriangle,
+  SquareShape,
+  BigTriangle,
+} from '../components/elements/shapes'
+import { RightImage } from '../components/elements/elements'
 
 import '../styles/blog-listing.css'
 
 export default function Index({ data }) {
   console.log(data)
-  const posts = data.allMarkdownRemark.edges
+  const { edges: posts } = data.allMarkdownRemark
 
   return (
     <div>
@@ -23,100 +29,143 @@ export default function Index({ data }) {
         }}
         className="blog-posts"
       >
+        <SquareShape>
+          <div className="shape">
+            <span id="first" />
+            <span id="second" />
+          </div>
+        </SquareShape>
+
+        <BigTriangle>
+          <div
+            style={{
+              float: 'right',
+              tdisplay: 'flex',
+            }}
+            className="shape"
+          >
+            <span id="first">&#x25BC;</span>
+            <span id="second">&#x25BC;</span>
+          </div>
+        </BigTriangle>
+
+        <SmallTriangle>
+          <div className="shape">
+            <span id="first">&#x25BC;</span>
+            <span id="second">&#x25BC;</span>
+          </div>
+        </SmallTriangle>
+
         {posts
 
           .filter(post => post.node.frontmatter.title.length > 0)
           .sort()
           .map(({ node: post }) => {
             return (
-              <div className="blog-post-preview" key={post.id}>
-                <h1>
-                  <Link
-                    style={{
-                      color: '#333F52',
-                    }}
-                    to={post.frontmatter.path}
-                  >
-                    {post.frontmatter.title}
-                  </Link>
-                </h1>
-                <div
-                  style={{
-                    display: 'flex',
-                  }}
-                >
+              <div className="blogParent">
+                <div className="blog-post-preview" key={post.id}>
                   <div>
-                    <div
-                      style={{
-                        width: 300,
-                        height: 200,
-                      }}
-                    >
-                      <img
+                    <h1>
+                      <Link
                         style={{
-                          width: '100%',
-                          height: '100%',
+                          color: '#333F52',
                         }}
-                        src={post.frontmatter.image}
-                      />
-                    </div>
-                    <div
-                      style={{
-                        display: 'flex',
-                      }}
-                    >
-                      <h2>{post.frontmatter.date}</h2>
-                      <h2>{post.frontmatter.author}</h2>
-                    </div>
+                        to={post.frontmatter.path}
+                      >
+                        {post.frontmatter.title}
+                      </Link>
+                    </h1>
                   </div>
-
                   <div
+                    className="swappable-row"
                     style={{
-                      padding: '2em',
+                      display: 'flex',
                     }}
                   >
-                    <p
-                      style={{
-                        maxWidth: 350,
-                        textAlign: 'justify',
-                        minWidth: 350,
-                        justifyContent: 'space-between',
-                        padding: '1em',
-                      }}
-                    >
-                      {post.excerpt}
-                    </p>
-                    <h2
-                      style={{
-                        textAlign: 'right',
-                        fontSize: '20px',
-                        color: '#3465DA',
-                        lineHeight: '24px',
-                      }}
-                    >
-                      <a
-                        href={post.frontmatter.path}
+                    <div>
+                      <div
                         style={{
-                          textDecoration: 'none',
-                          color: '#1DC9CA',
+                          width: 300,
+                          height: 200,
                         }}
                       >
-                        Read More
-                        <span
+                        <img
                           style={{
+                            width: '100%',
+                            height: '100%',
+                          }}
+                          src={post.frontmatter.image}
+                        />
+                        <div className="second_shape first-box blue" />
+                        <div className="second_shape second-box green" />
+                        <div className="clear-fix" />
+                      </div>
+                      <div
+                        style={{
+                          display: 'flex',
+                          padding: '1em',
+                          justifyContent: 'space-between',
+                        }}
+                      >
+                        <h2>{post.frontmatter.date}</h2>
+                        <h2>{post.frontmatter.author}</h2>
+                      </div>
+                    </div>
+
+                    <div
+                      style={{
+                        padding: '2em',
+                      }}
+                    >
+                      <p
+                        style={{
+                          maxWidth: 350,
+                          textAlign: 'justify',
+                          minWidth: 350,
+                          justifyContent: 'space-between',
+                          padding: '1em',
+                        }}
+                      >
+                        {post.excerpt}
+                      </p>
+                      <h2
+                        style={{
+                          textAlign: 'right',
+                          fontSize: '20px',
+                          color: '#3465DA',
+                          lineHeight: '24px',
+                        }}
+                      >
+                        <a
+                          href={post.frontmatter.path}
+                          style={{
+                            textDecoration: 'none',
                             color: '#1DC9CA',
                           }}
                         >
-                          >>
-                        </span>
-                      </a>
-                    </h2>
+                          Read More
+                          <span
+                            style={{
+                              color: '#1DC9CA',
+                            }}
+                          >
+                            >>
+                          </span>
+                        </a>
+                      </h2>
+                    </div>
                   </div>
                 </div>
               </div>
             )
           })}
       </div>
+      <style jsx>{`
+        .blogParent:nth-child(2n) .swappable-row {
+          display: flex;
+          flex-direction: row-reverse;
+        }
+      `}</style>
     </div>
   )
 }
