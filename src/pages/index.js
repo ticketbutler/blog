@@ -30,7 +30,15 @@ export default function Index({ data }) {
         className="blog-posts"
       >
         <SquareShape>
-          <div className="shape">
+          <div
+            className="shape"
+            style={{
+              display: 'flex',
+              position: 'absolute',
+              top: '70%',
+              left: '120%',
+            }}
+          >
             <span id="first" />
             <span id="second" />
           </div>
@@ -39,8 +47,8 @@ export default function Index({ data }) {
         <BigTriangle>
           <div
             style={{
-              float: 'right',
-              tdisplay: 'flex',
+              position: 'absolute',
+              left: '100%',
             }}
             className="shape"
           >
@@ -50,7 +58,14 @@ export default function Index({ data }) {
         </BigTriangle>
 
         <SmallTriangle>
-          <div className="shape">
+          <div
+            className="shape"
+            style={{
+              position: 'absolute',
+              top: '70%',
+              right: ' 110%',
+            }}
+          >
             <span id="first">&#x25BC;</span>
             <span id="second">&#x25BC;</span>
           </div>
@@ -96,10 +111,34 @@ export default function Index({ data }) {
                           }}
                           src={post.frontmatter.image}
                         />
-                        <div className="second_shape first-box blue" />
-                        <div className="second_shape second-box green" />
+                        <div
+                          className="second_shape first-box blue"
+                          style={{
+                            position: 'absolute',
+                            zIndex: -2,
+                            height: 240,
+                            width: 250,
+                            right: 510,
+                            top: 480,
+                            backgroundColor: '#326de9',
+                          }}
+                        />
+                        <div
+                          className="second_shape second-box green"
+                          style={{
+                            position: 'absolute',
+                            zIndex: -1,
+                            top: 545,
+                            right: 520,
+                            height: 210,
+                            width: 270,
+                            backgroundColor: '#1dc9cc',
+                            clipPath: 'polygon(0 0, 0% 100%, 100% 100%)',
+                          }}
+                        />
                         <div className="clear-fix" />
                       </div>
+
                       <div
                         style={{
                           display: 'flex',

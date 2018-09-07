@@ -76,7 +76,7 @@ export const BigTriangle = ({ children }) => {
           height: 200px;
           margin: 1px;
           position: relative;
-          transform: rotate(-40deg);
+          transform: rotate(40deg);
         }
 
         .big_triangle div.shape span {
@@ -102,7 +102,6 @@ export const BigTriangle = ({ children }) => {
 
         @media (max-width: 1080px) {
           .big_triangle div.shape {
-            transform: rotate(40deg);
           }
         }
 
@@ -116,7 +115,6 @@ export const BigTriangle = ({ children }) => {
           .big_triangle div.shape {
             width: 100px;
             height: 100px;
-            transform: rotate(40deg);
           }
           .big_triangle div.shape span {
             font-size: 100px;
