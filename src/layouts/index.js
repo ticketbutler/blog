@@ -57,10 +57,8 @@ export const Layout = ({ children, title }) => (
             >
               <div
                 style={{
-                  marginLeft: '15%',
-                  marginRight: '15%',
                   marginTop: '2em',
-                  paddingRight: '30px',
+
                   textAlign: 'center',
                 }}
               >

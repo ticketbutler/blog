@@ -5,7 +5,7 @@ import dateFns from 'date-fns'
 
 export default function Template({ data, location, pathContext }) {
   const post = pathContext.blog
-  console.log(pathContext)
+
   const { markdownRemark: posts } = data
   const { title, date, author, image } = post.frontmatter
   const { next, prev } = pathContext
@@ -13,37 +13,43 @@ export default function Template({ data, location, pathContext }) {
 
   return (
     <Layout title={title}>
-      <div style={{ textAlign: 'center' }}>
-        <a
-          href="./"
+      <div style={{}}>
+        <div style={{ textAlign: 'center' }}>
+          <a
+            href="./"
+            style={{
+              margin: '0 auto',
+              fontSize: '1.2rem',
+              textDecoration: 'none',
+              textTransform: 'uppercase',
+            }}
+          >
+            {title}
+          </a>
+        </div>
+
+        <img
           style={{
-            margin: '0 auto',
-            fontSize: '1.2rem',
-            textDecoration: 'none',
+            width: '100%',
+            maxWidth: 850,
+            minWidth: 850,
+            paddingTop: '1em',
+          }}
+          src={post.frontmatter.image}
+        />
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            paddingLeft: '2em',
+            paddingRight: '2em',
+            color: 'lightslategrey',
           }}
         >
-          {title}
-        </a>
-      </div>
-
-      <img
-        style={{
-          width: '100%',
-          paddingTop: '1em',
-        }}
-        src={post.frontmatter.image}
-      />
-
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          paddingLeft: '2em',
-          paddingRight: '2em',
-        }}
-      >
-        <h2>{dateFns.format(post.frontmatter.date, 'YYYY-MM-YY')}</h2>
-        <h2>{post.frontmatter.author}</h2>
+          <h2>{dateFns.format(post.frontmatter.date, 'YYYY-MM-YY')}</h2>
+          <h2>{post.frontmatter.author}</h2>
+        </div>
       </div>
       <div className="blog-post-container">
         <div className="blog-post">
@@ -60,39 +66,58 @@ export default function Template({ data, location, pathContext }) {
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
-          <p
+          <div
             style={{
-              display: 'flex',
-              float: 'left',
+              maxWidth: 850,
+              margin: '0 auto',
             }}
           >
-            {prev && (
-              <Link
-                to={prev.frontmatter.path}
-                style={{ textDecoration: 'none' }}
-              >
-                Previous post
-                <h2>{prev.frontmatter.title}</h2>
-              </Link>
-            )}
-          </p>
-          <p
-            style={{
-              display: 'flex',
-              float: 'right',
-              textDecoration: 'none',
-            }}
-          >
-            {next && (
-              <Link
-                to={next.frontmatter.path}
-                style={{ textDecoration: 'none' }}
-              >
-                Next post
-                <h2>{next.frontmatter.title}</h2>
-              </Link>
-            )}
-          </p>
+            <p
+              style={{
+                display: 'block',
+                width: '50%',
+                textAlign: 'left',
+                float: 'left',
+                fontSize: 15,
+                textTransform: 'uppercase',
+              }}
+            >
+              {prev && (
+                <Link
+                  to={prev.frontmatter.path}
+                  style={{ textDecoration: 'none' }}
+                >
+                  Previous post
+                  <h2 style={{ color: 'lightslategrey', fontSize: 18 }}>
+                    {prev.frontmatter.title}
+                  </h2>
+                </Link>
+              )}
+            </p>
+            <p
+              style={{
+                display: 'block',
+                float: 'right',
+                width: '50%',
+                textAlign: 'right',
+                textDecoration: 'none',
+                textTransform: 'uppercase',
+                fontSize: 15,
+              }}
+            >
+              {next && (
+                <Link
+                  to={next.frontmatter.path}
+                  style={{ textDecoration: 'none' }}
+                >
+                  Next post
+                  <h2 style={{ color: 'lightslategrey', fontSize: 18 }}>
+                    {next.frontmatter.title}
+                  </h2>
+                </Link>
+              )}
+            </p>
+          </div>
         </div>
       </div>
     </Layout>

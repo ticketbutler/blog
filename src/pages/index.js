@@ -187,6 +187,7 @@ export default function Index({ data }) {
                             textDecoration: 'none',
                             color: '#1DC9CA',
                             position: 'absolute',
+
                             right: 0,
                             bottom: 0,
                             margin: '1em',
