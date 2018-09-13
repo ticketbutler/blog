@@ -20,7 +20,7 @@ export default function Template({ data, location, pathContext }) {
           textDecoration: 'none',
         }}
       >
-        {titldfsdfdfsfe}
+        {title}
       </a>
 
       <img
