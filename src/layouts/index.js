@@ -1,10 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-
-import Header from '../components/header'
-import './index.css'
-
+import '../layouts/layout-overide.css'
 import Media from 'react-media'
 
 export const Layout = ({ children, title }) => (
@@ -17,7 +14,6 @@ export const Layout = ({ children, title }) => (
       ]}
     />
 
-    <Header />
     <div
       style={{
         margin: '0 auto',
@@ -43,7 +39,7 @@ export const Layout = ({ children, title }) => (
             >
               <div
                 style={{
-                  flex: 1,
+                  flex: 2,
                 }}
               >
                 {typeof children === 'function' ? children() : children}

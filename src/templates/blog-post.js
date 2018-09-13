@@ -1,6 +1,7 @@
 import React from 'react'
 import { Layout } from '../layouts/index.js'
 import Link from 'gatsby-link'
+import dateFns from 'date-fns'
 
 export default function Template({ data, location, pathContext }) {
   const post = pathContext.blog
@@ -12,16 +13,18 @@ export default function Template({ data, location, pathContext }) {
 
   return (
     <Layout title={title}>
-      <a
-        href="./"
-        style={{
-          margin: '0 auto',
-          fontSize: '1.2rem',
-          textDecoration: 'none',
-        }}
-      >
-        {title}
-      </a>
+      <div style={{ textAlign: 'center' }}>
+        <a
+          href="./"
+          style={{
+            margin: '0 auto',
+            fontSize: '1.2rem',
+            textDecoration: 'none',
+          }}
+        >
+          {title}
+        </a>
+      </div>
 
       <img
         style={{
@@ -39,7 +42,7 @@ export default function Template({ data, location, pathContext }) {
           paddingRight: '2em',
         }}
       >
-        <h2>{post.frontmatter.date}</h2>
+        <h2>{dateFns.format(post.frontmatter.date, 'YYYY-MM-YY')}</h2>
         <h2>{post.frontmatter.author}</h2>
       </div>
       <div className="blog-post-container">
@@ -57,19 +60,36 @@ export default function Template({ data, location, pathContext }) {
             className="blog-post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
-          <p>
+          <p
+            style={{
+              display: 'flex',
+              float: 'left',
+            }}
+          >
             {prev && (
-              <Link to={prev.frontmatter.path}>
-                Previous:
-                {prev.frontmatter.title}
+              <Link
+                to={prev.frontmatter.path}
+                style={{ textDecoration: 'none' }}
+              >
+                Previous post
+                <h2>{prev.frontmatter.title}</h2>
               </Link>
             )}
           </p>
-          <p>
+          <p
+            style={{
+              display: 'flex',
+              float: 'right',
+              textDecoration: 'none',
+            }}
+          >
             {next && (
-              <Link to={next.frontmatter.path}>
-                Next:
-                {next.frontmatter.title}
+              <Link
+                to={next.frontmatter.path}
+                style={{ textDecoration: 'none' }}
+              >
+                Next post
+                <h2>{next.frontmatter.title}</h2>
               </Link>
             )}
           </p>
